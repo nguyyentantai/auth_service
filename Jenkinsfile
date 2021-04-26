@@ -34,11 +34,10 @@ pipeline {
             steps {
                 echo '=== Building Petclinic Docker Image ==='
                 script {
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    dockerImage = docker.build registry + ":${env.BUILD_NUMBER}"
                 }
             }
         }
-        env.BUILD_NUMBER
         stage('Push Docker Image') {
             //        when {
             //            branch 'master'
